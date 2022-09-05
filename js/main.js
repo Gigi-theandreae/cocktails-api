@@ -1,65 +1,91 @@
-
-document.querySelector('button').addEventListener ('click', getDrink)
-
+document.querySelector("button").addEventListener("click", getDrink);
 
 function getDrink() {
-  const choice = document.querySelector('input').value 
-  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${choice}`
+  const choice = document.querySelector("input").value;
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${choice}`;
 
-  
-  fetch (url)
-  .then(res => res.json()) 
-  .then(data => {
-     console.log("ALL DRINKS", data.drinks);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("ALL DRINKS", data.drinks);
 
-     data.drinks.forEach((obj) => {
-       /// console.log(obj.strDrink + obj.strDrinkThumb + obj.strInstructions);
+      data.drinks.forEach((obj) => {
+        /// console.log(obj.strDrink + obj.strDrinkThumb + obj.strInstructions);
 
-       //  <li>
-       //   <p>{NAME}</p>
-       //   <img></img>
-       //   <p></p>
-       //  </li>
+        //  <li><a>
+        //   <h1>{NAME}</h1>
+        //   <img></img>
+        //   <p></p>
+        //  </a></li>
+
+        // Insert hidden element
+        let li = document.createElement("li");
+        li.setAttribute("id", obj.idDrink);
+        
 
 
-       // Insert hidden element
-       let li = document.createElement("li");
-       li.setAttribute("id", obj.idDrink);
-       li.style.display = "none";
+        //Lets make a list
+        // li = document.createElement("li"); 
 
-       let p = document.createElement("p");
-       p.textContent = obj.strDrink;
-       li.appendChild(p);
+        let a = document.createElement("a");
+        a.setAttribute("data-src", obj.idDrink);
+        a.textContent = obj.strDrink;
+        li.appendChild(a);
 
-       let img = document.createElement("img");
-       img.src = obj.strDrinkThumb;
-       li.appendChild(img);
+        document.getElementById("drinks").appendChild(li);
 
-       let p_instructions = document.createElement("p");
-       p_instructions.textContent = obj.strInstructions;
-       li.appendChild(p_instructions);
 
-       document.getElementById("selected_drink").appendChild(li);
 
-       //Lets make a list
+        
 
-       li = document.createElement("li");
+        document.querySelector('#drinks').addEventListener ('click', selectedItem)
 
-       let a = document.createElement("a");
-       a.setAttribute("data-src", obj.idDrink);
-       a.textContent = obj.strDrink;
-       li.appendChild(a);
+        function selectedItem(){
 
-       document.getElementById("drinks").appendChild(li);
-     };);
-  })
-  .catch(err => {
-      console.log(`error ${err}`)
-  });
+          document.getElementById("selected_drink").appendChild(li)
 
+          // how to just show the selected drink and hide the others.
+          // this shows all the options with the name,img and inst.
+          let h1 = document.createElement("h1");
+          h1.textContent = obj.strDrink;
+          li.appendChild(h1);
+
+          let img = document.createElement("img");
+          img.src = obj.strDrinkThumb;
+          li.appendChild(img);
+
+          let p = document.createElement("p");
+          p.textContent = obj.strInstructions;
+          li.appendChild(p);
+
+
+          document.querySelector('a').style.display = "none"
+
+        }
+
+        
+      });
+    })
+
+
+   
+
+
+    .catch((err) => {
+      console.log(`error ${err}`);
+    });
 }
 
 
 
-/// select all li from ul  display none
+/// ----- select all li from ul  display none
 /// select the li with the id that I chose and show that one
+// clear the previous search when enter new input (choice.clear();?)
+
+
+// add an event listener to idDrink to display selected drink, and hide the other options
+
+      
+  
+       
+

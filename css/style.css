@@ -20,3 +20,15 @@ img{
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+a{
+  cursor: pointer;
+}
+
+a:hover{
+  color: rgb(0, 185, 0);
+}
+
+li{
+  list-style-type: none;
+}
+
