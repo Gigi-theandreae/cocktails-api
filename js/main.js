@@ -34,20 +34,24 @@ function getDrink() {
 
         document.getElementById("drinks").appendChild(li);
 
-
-
+        
         
 
         document.querySelector('#drinks').addEventListener ('click', selectedItem)
 
         function selectedItem(){
 
+
           document.getElementById("selected_drink").appendChild(li)
+
+          
 
           // how to just show the selected drink and hide the others.
           // this shows all the options with the name,img and inst.
+          for (let i = 0; i < 30; i++) {
+          
           let h1 = document.createElement("h1");
-          h1.textContent = obj.strDrink;
+          h1.textContent = `obj.strDrink${i}`;
           li.appendChild(h1);
 
           let img = document.createElement("img");
@@ -60,15 +64,12 @@ function getDrink() {
 
 
           document.querySelector('a').style.display = "none"
-
+          }
         }
 
         
       });
     })
-
-
-   
 
 
     .catch((err) => {
