@@ -47,9 +47,8 @@ function getDrink() {
     
       }
 
-
+      //Whenever new search is made, the old one is removed 
       document.querySelector("button").addEventListener("click", clearList);
-
       function clearList(){
         document.querySelector('ul').innerHTML = '';
       }
