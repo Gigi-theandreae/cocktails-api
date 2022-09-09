@@ -30,8 +30,9 @@ function getDrink() {
 
         //if theres a match lets create the HTML object
           let li = document.createElement("li");
-
+          li.setAttribute('id','selectedDrink');
           let h1 = document.createElement("h1");
+          h1.setAttribute('id','selectedDrinkTitle')
           h1.textContent = drink.strDrink;
           li.appendChild(h1);
       
@@ -73,6 +74,7 @@ function getDrink() {
         
         //Lets make a list
         let li = document.createElement("li");
+        li.setAttribute('id','drinkList');
         let a = document.createElement("a");
         a.setAttribute("data-drinkid", obj.idDrink); // This
         a.textContent = obj.strDrink;

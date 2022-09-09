@@ -13,22 +13,139 @@
 img{
   display: block;
   margin: 0 auto;
-  height: 20rem;
+  height: 15rem;
 }
 
 
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
-a{
+
+body{
+  background: #291720;
+  font-family: "Helvetica Neue",Helvetica,Arial;
+}
+
+.header{
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input{
+  margin: 1rem 0;
+  height: 2rem;
+  width: 15rem;
+  border: 1px solid #291720;
+  border-radius: 1rem;
+  text-indent: 10px; 
+}
+input:hover{
   cursor: pointer;
+  border:1px solid #EADAA2;
+  box-shadow: 0 0 3px  #EADAA2;
+}
+
+input:focus{
+  border: 0px solid;
+}
+
+
+
+button {
+  width: 55%;
+  height: 2rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: #EADAA2;
+  color: #E40066;
+  border-radius: 1rem;
+}
+
+.btn:hover{
+  cursor: pointer;
+  transform: scale(.95);
+}
+
+
+h1{
+  color: #E40066;
+  font-size: 2rem;
+}
+
+/* -------Click Events------- */
+
+.list{
+  margin: 0 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.drinks{
+  display: block;
+  padding-right: 5rem;
+}
+
+#drinkList{
+  cursor: pointer;
+  color: #E40066;
+  
 }
 
 a:hover{
-  color: rgb(0, 185, 0);
+  color: #ebe4cd;
+}
+
+#drinkList{
+  padding: .5rem 1rem;
+  margin: 1rem;
+  list-style-type: none;
+  border: 1px solid #1bcaff;
+}
+
+#drinkList:hover{
+  color: #ebe4cd;
+}
+
+
+ul{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 li{
-  list-style-type: none;
+  border-radius: 1rem;
 }
 
+
+#selectedDrinkTitle{
+  color: #EADAA2;
+}
+
+#selectedDrink{
+  padding: 1rem;
+  margin: 1rem 0;
+  max-width: 50rem;
+  border: 1px solid #1bcaff;
+}
+
+
+p{
+  color: #EADAA2;
+  padding: 1rem;
+  width: 30rem;
+  text-align:center;
+}
