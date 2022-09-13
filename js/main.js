@@ -3,8 +3,6 @@
 document.querySelector("button").addEventListener("click", getDrink);
 //store the list of drinks in a global variable
 let drinkresults = null;
-//when someone clicks on a drink store what drinkID they selected
-let selectedDrinkID = null; //1234
 
  //lets get the list of drinks based on the text we typed.
 function getDrink() {
