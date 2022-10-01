@@ -28,6 +28,11 @@ function getDrink() {
             li.setAttribute("id", "drinkList");
             document.getElementById("drinks").appendChild(li);
 
+            let img = document.createElement("img");
+            img.setAttribute("id", "drinkListImg")
+            img.src = obj.strDrinkThumb;
+            li.appendChild(img);
+
             // created an element
             let a = document.createElement("a");
             a.setAttribute("data-drinkid", obj.idDrink);
