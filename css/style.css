@@ -104,6 +104,7 @@ h1{
   scroll-behavior: smooth;
 }
 
+
 /* Scroll Bar */
 ul::-webkit-scrollbar {
   width: 1em;

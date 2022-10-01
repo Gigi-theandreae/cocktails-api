@@ -1,3 +1,5 @@
+const drinksListUl = document.querySelector('ul');
+drinksListUl.style.display="none"; //hides the scrollbar at the beginning.
 
 document.querySelector("button").addEventListener("click", getDrink);
 let drinkresults = null;
@@ -40,6 +42,7 @@ function getDrink() {
             li.appendChild(a);
             a.addEventListener("click", (event) => selectedItem(event, data.drinks)); 
         
+            drinksListUl.style.display = '';
         });
       })
       .catch((err) => {
