@@ -22,7 +22,8 @@ img{
 /*******************************************/
 
 body{
-  background: #291720;
+  background-image: url("../1.jpg");
+  background-size: cover;
   font-family: "Helvetica Neue",Helvetica,Arial;
 }
 
@@ -36,23 +37,42 @@ body{
 
 .input-container{
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 input{
   margin: 1rem 0;
-  height: 2rem;
-  width: 15rem;
+  height: 3rem;
+  width: 20rem;
+  color: #f4f4f4;
+  font-size:1.5rem;
+  font-weight: bold;
   border: 1px solid #291720;
-  border-radius: 1rem;
+  border-radius: 2rem;
   text-indent: 10px; 
 }
+
+input[type="text"]
+{
+    border:1px solid #EADAA2;
+    background: transparent;
+    box-shadow: 0 0 3px  #EADAA2;
+    box-shadow: inset 0 0 4rem rgb(87, 87, 87);
+}
+
+input::placeholder{
+  color: rgb(240, 240, 240);
+  font-size: 1.2rem;
+  text-shadow: 1px 1px rgb(36, 36, 36);
+}
+
 input:hover{
   cursor: pointer;
   border:1px solid #EADAA2;
   box-shadow: 0 0 3px  #EADAA2;
+  box-shadow: inset 0 0 4rem gray;
 }
 
 input:focus{
@@ -62,26 +82,34 @@ input:focus{
 
 
 button {
-  width: 55%;
-  height: 2rem;
+  width: 8rem;
+  height: 2.5rem;
   font-weight: bold;
+  font-size: 1.2rem;
   text-align: center;
-  background-color: #EADAA2;
-  color: #E40066;
-  border-radius: 1rem;
+  background: transparent;
+  box-shadow: 0 0 3px  #EADAA2;
+  box-shadow: inset 0 0 4rem rgb(87, 87, 87);
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  text-shadow: 1px 1px rgb(36, 36, 36);
+  border:1px solid #EADAA2;
+  border-radius: 1.5rem;
 }
 
 .btn:hover{
   cursor: pointer;
-  transform: scale(.95);
+  transform: scale(1.05);
+  color: rgb(240, 240, 240);
+  box-shadow: inset 0 0 4rem gray;
 }
 
 
 h1{
-  color: #E40066;
-  font-size: 2rem;
+  color: #e6dfc3;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px #000000;
 }
-
 /* -------Click Events------- */
 
 .list{
@@ -89,14 +117,17 @@ h1{
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
 }
 
 .drinks{
   display: block;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   height: 28.5rem;
-  border: 1px solid #1bcaff;
-  border-radius: 10px;
   padding-right: 1rem;
   margin: 1rem;
   overflow-y: scroll;
@@ -115,13 +146,16 @@ ul::-webkit-scrollbar {
   margin-block: .06rem;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsla(333, 100%, 60%, 0.361);
+  background: transparent;
+  box-shadow: 0 0 3px  #EADAA2;
+  box-shadow: inset 0 0 1.5rem rgb(161, 161, 161);
   border: 1px solid rgba(128, 128, 128, 0.472);
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover{
-  background:#e40067b4;
-  box-shadow:inset 0 0 10px rgba(128, 128, 128, 0.708);
+  background: transparent;
+  box-shadow: 0 0 3px  #EADAA2;
+  box-shadow: inset 0 0 2rem rgb(182, 182, 182);
 }
 /* End Of Scroll Bar */
 
@@ -129,20 +163,27 @@ ul::-webkit-scrollbar {
 
 #drinkList{
   cursor: pointer;
-  color: #EADAA2;
+  color: #e5e0cf;
+  text-shadow: .5px .5px black;
+  box-shadow: inset 0 0 20px gray;
+  font-size: 1.1rem;
+  text-align: left;
+  font-weight: bold;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  gap: 1rem;
 }
 
 #drinkListImg{
   width: 3rem;
   height: 3rem;
   margin: 0 .5rem;
+  border-radius: .3rem;
 }
 
 a:hover{
-  color: #E40066;
+  color: #f1e453;
 }
 
 #drinkList{
@@ -150,12 +191,8 @@ a:hover{
   padding: .5rem 1rem;
   margin: 1rem;
   list-style-type: none;
-  border: 1px solid #1bcaff;
 }
 
-#drinkList:hover{
-  color: #ebe4cd;
-}
 
 
 ul{
@@ -174,23 +211,29 @@ li{
 
 
 #selectedDrinkTitle{
-  color: #EADAA2;
+  color: #e6dfc3;
 }
 
 #selectedDrink{
+  background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
   padding: 1rem ;
-   margin-left: 5rem; 
+  margin-left: 5rem; 
   max-width: 40rem;
-  border: 1px solid #1bcaff;
 }
 
 
 p{
-  color: #EADAA2;
+  color: #e6dfc3;
   padding: 1rem;
   width: 30rem;
   text-align:center;
+  font-weight: bold;
 }
 
 

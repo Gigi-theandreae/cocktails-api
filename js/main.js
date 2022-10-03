@@ -4,9 +4,8 @@ drinksListUl.style.display="none"; //hides the scrollbar at the beginning.
 document.querySelector("button").addEventListener("click", getDrink);
 let drinkresults = null;
 
- //lets get the list of drinks based on the text we typed.
+ //Get the list of drinks based on the text we typed.
 function getDrink() {
-
     clearSelectedDrink("selected_drink");
 
     const choice = document.querySelector("input").value;
@@ -15,17 +14,16 @@ function getDrink() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        // If there is another search, clear the first one
+        // If there is another search, clear the previous one
         clearSelectedDrink("drinks");
 
-        // gives all the drink options with the inputted drink name
+        // gives all the cocktails with the inputted drink name(example: for 'Gin'; gin fizz, gin smash... etc.),
         drinkresults = data.drinks;
         console.log(data.drinks);
 
-        // for each of that drink result, pull the data of those drinks, 
-        // assign them onto the 'a' elements which we will create
+        // for each cocktail result pull the data for all the cocktails, 
+        // assign them onto the elements which will created
         data.drinks.forEach((obj) => {
-            //Lets make a list
             let li = document.createElement("li");
             li.setAttribute("id", "drinkList");
             document.getElementById("drinks").appendChild(li);
@@ -35,7 +33,6 @@ function getDrink() {
             img.src = obj.strDrinkThumb;
             li.appendChild(img);
 
-            // created an element
             let a = document.createElement("a");
             a.setAttribute("data-drinkid", obj.idDrink);
             a.textContent = obj.strDrink;
@@ -49,8 +46,7 @@ function getDrink() {
         console.log(`error ${err}`);
       });
 
-        // If you choose another drink from the list, 
-        // it clears the previous drink display
+        // If you choose another drink from the list,it clears the previous drink display
         function clearSelectedDrink(selector){
           let toRemoveContent = document.getElementById(selector);
           while (toRemoveContent.firstChild) {
@@ -58,8 +54,7 @@ function getDrink() {
           }
         } 
        
-    //When someone clicks on a drink from the list
-    // were going to loop through all of the drink data we have
+    //When someone clicks on a drink from the list, loop through all of the drink data
     // find the match and display it
     function selectedItem(event, drinks) {
         let drinkID = event.target.dataset.drinkid; 
@@ -67,21 +62,22 @@ function getDrink() {
         clearSelectedDrink("selected_drink");
       
 
-      //loop through all drinks list to display the selected drink
       drinks.forEach((drink) => {
-        // if the clicked drink id matches with the api drink id, 
-        // That's the selected one. display that drink
+        // if the selected drink id matches with the api drink id, display that drink
         if (drink.idDrink == drinkID) {
-            //if theres a match lets create the HTML object
+
             let li = document.createElement("li");
             li.setAttribute("id", "selectedDrink");
             let h1 = document.createElement("h1");
+
             h1.setAttribute("id", "selectedDrinkTitle");
             h1.textContent = drink.strDrink;
             li.appendChild(h1);
+
             let img = document.createElement("img");
             img.src = drink.strDrinkThumb;
             li.appendChild(img);
+
             let p = document.createElement("p");
             p.textContent = drink.strInstructions;
             li.appendChild(p);
