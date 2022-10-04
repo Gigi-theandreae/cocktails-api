@@ -101,9 +101,9 @@ h1{
 
 .list{
   margin-top: 5rem;
-  display: flex;
+  display: flex; 
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-start; 
 }
 
 .drinks{
