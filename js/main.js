@@ -1,7 +1,6 @@
 //On initial load we have to hide the scrollbar since the list is empty for this we are hiding the entire ul container
 const drinksListUl = document.querySelector('#drinks');
 
-
 document.querySelector("button").addEventListener("click", getDrink);
 
  //Get the list of drinks based on the text we typed.
@@ -15,7 +14,7 @@ function getDrink() {
       .then((res) => res.json())
       .then((data) => {
         // If there is another search, clear the previous one
-        clearSelectedDrink("drinks");
+        clearSelectedList("drinks");
 
         // create a list item for each that we will attach to the existing ul dom element
         data.drinks.forEach((obj) => {
