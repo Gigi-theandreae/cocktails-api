@@ -1,15 +1,15 @@
-const drinksListUl = document.querySelector('ul');
-drinksListUl.style.display="none"; //hides the scrollbar at the beginning.
+//On initial load we have to hide the scrollbar since the list is empty for this we are hiding the entire ul container
+const drinksListUl = document.querySelector('#drinks');
+
 
 document.querySelector("button").addEventListener("click", getDrink);
-let drinkresults = null;
 
  //Get the list of drinks based on the text we typed.
 function getDrink() {
-    clearSelectedDrink("selected_drink");
+    clearSelectedList("selected_drink");
 
-    const choice = document.querySelector("input").value;
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${choice}`;
+    const inputValue = document.querySelector("input").value;
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputValue}`;
 
     fetch(url)
       .then((res) => res.json())
@@ -17,12 +17,7 @@ function getDrink() {
         // If there is another search, clear the previous one
         clearSelectedDrink("drinks");
 
-        // gives all the cocktails with the inputted drink name(example: for 'Gin'; gin fizz, gin smash... etc.),
-        drinkresults = data.drinks;
-        console.log(data.drinks);
-
-        // for each cocktail result pull the data for all the cocktails, 
-        // assign them onto the elements which will created
+        // create a list item for each that we will attach to the existing ul dom element
         data.drinks.forEach((obj) => {
             let li = document.createElement("li");
             li.setAttribute("id", "drinkList");
@@ -38,29 +33,26 @@ function getDrink() {
             a.textContent = obj.strDrink;
             li.appendChild(a);
             a.addEventListener("click", (event) => selectedItem(event, data.drinks)); 
-        
-            drinksListUl.style.display = '';
         });
+        drinksListUl.style.display = 'block';
       })
       .catch((err) => {
         console.log(`error ${err}`);
-      });
-
-        // If you choose another drink from the list,it clears the previous drink display
-        function clearSelectedDrink(selector){
-          let toRemoveContent = document.getElementById(selector);
-          while (toRemoveContent.firstChild) {
-            toRemoveContent.removeChild(toRemoveContent.firstChild);
-          }
-        } 
-       
-    //When someone clicks on a drink from the list, loop through all of the drink data
-    // find the match and display it
+    });
+}
+    // If you choose another drink from the list,it clears the previous drink display
+    function clearSelectedList(selector){
+      let toRemoveContent = document.getElementById(selector);
+      while (toRemoveContent.firstChild) {
+        toRemoveContent.removeChild(toRemoveContent.firstChild);
+      }
+    } 
+   
+    
     function selectedItem(event, drinks) {
         let drinkID = event.target.dataset.drinkid; 
-        console.dir(event.target);
-        clearSelectedDrink("selected_drink");
-      
+
+        clearSelectedList("selected_drink");
 
       drinks.forEach((drink) => {
         // if the selected drink id matches with the api drink id, display that drink
@@ -85,7 +77,6 @@ function getDrink() {
         }
       });
     } // EOF List
-}
 
 // Execute a function when the user presses a key on the keyboard
 let input = document.getElementById("drinkInput");
