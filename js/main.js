@@ -1,20 +1,12 @@
-/* Eddie: make sure you get rid of all the console.logs or comment them out in final code
-*/
-
-/* Eddie: also better yet. instead of using JS, use css that way there is no delay in hiding it on page load
-since css loads before js
-*/
-
 //On initial load we have to hide the scrollbar since the list is empty for this we are hiding the entire ul container
-const drinksListUl = document.querySelector('ul');
-drinksListUl.style.display="none"; 
+const drinksListUl = document.querySelector('#drinks');
 
 
 document.querySelector("button").addEventListener("click", getDrink);
 
  //Get the list of drinks based on the text we typed.
 function getDrink() {
-    clearSelectedDrink("selected_drink");
+    clearSelectedList("selected_drink");
 
     const inputValue = document.querySelector("input").value;
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputValue}`;
@@ -42,29 +34,25 @@ function getDrink() {
             li.appendChild(a);
             a.addEventListener("click", (event) => selectedItem(event, data.drinks)); 
         });
-        drinksListUl.style.display = '';
+        drinksListUl.style.display = 'block';
       })
       .catch((err) => {
         console.log(`error ${err}`);
     });
 }
     // If you choose another drink from the list,it clears the previous drink display
-    /* Eddie: since we changed this method so that we can use it for different elements
-    we should change the comment to reflect that
-    */
-    function clearSelectedDrink(selector){
+    function clearSelectedList(selector){
       let toRemoveContent = document.getElementById(selector);
       while (toRemoveContent.firstChild) {
         toRemoveContent.removeChild(toRemoveContent.firstChild);
       }
     } 
-       
-    /* When someone clicks on a drink from the list, loop through all of the drink data
-     find the match and display it */
+   
+    
     function selectedItem(event, drinks) {
         let drinkID = event.target.dataset.drinkid; 
 
-        clearSelectedDrink("selected_drink");
+        clearSelectedList("selected_drink");
 
       drinks.forEach((drink) => {
         // if the selected drink id matches with the api drink id, display that drink
